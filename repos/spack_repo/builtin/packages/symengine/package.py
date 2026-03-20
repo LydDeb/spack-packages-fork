@@ -21,6 +21,7 @@ class Symengine(CMakePackage):
     license("MIT")
 
     version("master", branch="master")
+    version("0.10.1", sha256="9c007c99e9633f5549a55fa7a66ebcbcf9e04092eb55f7bb781c22b9cf0570c4")
     version("0.9.0", sha256="dcf174ac708ed2acea46691f6e78b9eb946d8a2ba62f75e87cf3bf4f0d651724")
     version("0.8.1", sha256="41eb6ae6901c09e53d7f61f0758f9201e81fc534bfeecd4b2bd4b4e6f6768693")
     version("0.7.0", sha256="8b865bb72b71539d9cd2488a0468c6c3ea90cc606062a7880c3ff5af6abd74b1")
