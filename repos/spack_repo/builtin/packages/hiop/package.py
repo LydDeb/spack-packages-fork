@@ -106,6 +106,12 @@ class Hiop(CMakePackage, CudaPackage, ROCmPackage):
         description="Enable/disable cuSovler LU refactorization",
     )
 
+    patch(
+        "https://github.com/llnl/hiop/commit/1d50896dd8df0a7c853e998e6814566d8.patch?full_index=1",
+        sha256="e73daa7f15863cb3c9dfad9509d46984ad1943506a7a5e04183817eba6d14aed",
+        when="@1.2.0",
+    )
+
     depends_on("c", type="build")
     depends_on("cxx", type="build")
     depends_on("fortran", type="build")
@@ -157,11 +163,10 @@ class Hiop(CMakePackage, CudaPackage, ROCmPackage):
     depends_on("raja+openmp", when="+raja~cuda~rocm")
 
     # RAJA > 0.14 and Umpire > 6.0 require c++ std 14
-    # We are working on supporting newer Umpire/RAJA versions
-    depends_on("raja@2024.07.0", when="@1.1.1:+raja")
+    depends_on("raja@2024.07.0:", when="@1.1.1:+raja")
     depends_on("raja@0.14", when="@0.5:1.1.0+raja")
     depends_on("raja@:0.13", when="@0.3.99:0.4+raja")
-    depends_on("umpire@2024.07.0", when="@1.1.1:+raja")
+    depends_on("umpire@2024.07.0:", when="@1.1.1:+raja")
     depends_on("umpire@6", when="@0.5:1.1.0+raja")
     depends_on("umpire@:5", when="@0.3.99:0.4+raja")
     depends_on("camp@0.2.3:0.2", when="@0.3.99:1.1.0+raja")
