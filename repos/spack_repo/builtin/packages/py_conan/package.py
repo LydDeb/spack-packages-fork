@@ -15,6 +15,7 @@ class PyConan(PythonPackage):
 
     license("MIT")
 
+    version("1.66.0", sha256="04d2ad0f6ec6f055d95fa0a157b55fdea9328ae67f51b11e7d26e9d9d2f76ab9")
     version("1.52.0", sha256="184761f16d00fde17615e60125d2f14fca692ffba7666cc7d6d834fc3858cf82")
 
     depends_on("python@3.6:", type=("build", "run"))
@@ -27,7 +28,8 @@ class PyConan(PythonPackage):
     depends_on("py-fasteners@0.14.1:", type=("build", "run"))
     depends_on("py-six@1.10.0:1.16.0", type=("build", "run"))
     depends_on("py-node-semver@0.6.1", type=("build", "run"))
-    depends_on("py-distro@1.0.2:1.6.0", type=("build", "run"), when="platform=linux")
+    depends_on("py-distro@1.0.2:1.8.0", type=("build", "run"), when="@1.66: platform=linux")
+    depends_on("py-distro@1.0.2:1.6.0", type=("build", "run"), when="@1.52: platform=linux")
     depends_on("py-pygments@2.0:2", type=("build", "run"))
     depends_on("py-tqdm@4.28.1:4", type=("build", "run"))
     depends_on("py-jinja2@3.0:3", type=("build", "run"))
