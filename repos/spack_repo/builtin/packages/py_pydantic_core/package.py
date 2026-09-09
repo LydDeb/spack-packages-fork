@@ -11,7 +11,7 @@ from spack.package import *
 class PyPydanticCore(PythonPackage):
     """Core functionality for Pydantic validation and serialization"""
 
-    homepage = "https://github.com/pydantic/pydantic-core"
+    homepage = "https://github.com/pydantic/pydantic"
     pypi = "pydantic_core/pydantic_core-2.18.4.tar.gz"
 
     license("MIT", checked_by="qwertos")
