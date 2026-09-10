@@ -21,7 +21,7 @@ class PyConan(PythonPackage):
     depends_on("python@3.6:", type=("build", "run"))
     depends_on("py-setuptools", type="build")
     depends_on("py-requests@2.25:2", type=("build", "run"))
-    depends_on("py-urllib3@1.26.6:1.26", type=("build", "run"))
+    depends_on("py-urllib3@1.26.6:", type=("build", "run"))
     depends_on("py-colorama@0.3.3:0.4", type=("build", "run"))
     depends_on("py-pyyaml@3.11:6.0", type=("build", "run"))
     depends_on("py-patch-ng@1.17.4:1.17", type=("build", "run"))
