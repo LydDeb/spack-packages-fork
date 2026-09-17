@@ -31,5 +31,5 @@ class PyQutip(PythonPackage):
     depends_on("py-numpy@1.16.6:", type=("build", "run"), when="@4")
     # https://github.com/qutip/qutip/pull/2421
     depends_on("py-numpy@:1", type=("build", "run"), when="@4")
-    depends_on("py-scipy@1.9:1.15,1.8:", type=("build", "run"), when="@5:")
+    depends_on("py-scipy@1.9:1.15,1.18:", type=("build", "run"), when="@5:")
     depends_on("py-scipy@1.0:", type=("build", "run"))
