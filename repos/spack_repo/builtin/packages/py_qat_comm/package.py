@@ -59,4 +59,4 @@ class PyQatComm(PythonPackage):
                 pkg_ver, cp_ver, platform_tag, first_letter, dash_name, underscored_name
             )
         else:
-            raise ValueError(f"Unsupported tag {tag}")
+            raise ValueError(f"Unsupported tag {platform_tag}")
