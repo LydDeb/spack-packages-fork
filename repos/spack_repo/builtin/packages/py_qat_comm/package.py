@@ -58,6 +58,7 @@ class PyQatComm(PythonPackage):
             "1.9.0-cp310",
             sha256="d5db7832aa3a395f2cd5545d203917d879c0346fe9b3d5be2ecc22ed20382ddc",
         )
+        depends_on("python@3.14", type=("build", "run"), when="@1.9.0-cp314")
     elif "manylinux_2_28_aarch64" == platform_tag:
         version(
             "1.9.0-cp312",
@@ -92,6 +93,7 @@ class PyQatComm(PythonPackage):
             "1.9.0-cp310",
             sha256="fab0184f5ae9b0b9f5e227a35cf4714eac63f24cd4b0b2f617e037f91114b79f",
         )
+        depends_on("python@3.14", type=("build", "run"), when="@1.9.0-cp314")
     elif "manylinux_2_34_x86_64" == platform_tag:
         version(
             "1.9.0-cp314",
@@ -113,6 +115,7 @@ class PyQatComm(PythonPackage):
             "1.9.0-cp310",
             sha256="5319162d67bd165272eabbce6b5e80d52dfd0d22d8dcbb1e5704199b6d38f9db",
         )
+        depends_on("python@3.14", type=("build", "run"), when="@1.9.0-cp314")
     elif "win_amd64" == platform_tag:
         version(
             "1.9.0-cp314",
@@ -134,6 +137,7 @@ class PyQatComm(PythonPackage):
             "1.9.0-cp310",
             sha256="a1b0b441b00c0f9264206a689ff968526b7c84a2b6d82cc435fa6d66aacf1132",
         )
+        depends_on("python@3.14", type=("build", "run"), when="@1.9.0-cp314")
 
     depends_on("python@3.13", type=("build", "run"), when="@1.9.0-cp313")
     depends_on("python@3.12", type=("build", "run"), when="@1.9.0-cp312")
