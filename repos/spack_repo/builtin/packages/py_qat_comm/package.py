@@ -17,8 +17,6 @@ class PyQatComm(PythonPackage):
 
     maintainers("LydDeb")
 
-    supported_tag = ["manylinux_2_28_x86_64"]
-
     platform_tag = next(sys_tags()).platform
     if "manylinux_2_28_x86_64" == platform_tag:
         version(
