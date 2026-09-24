@@ -2,7 +2,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-from packaging.tags import sys_tags
+import ctypes
+import platform
 from spack_repo.builtin.build_systems.python import PythonPackage
 
 from spack.package import *
@@ -17,7 +18,18 @@ class PyQatComm(PythonPackage):
 
     maintainers("LydDeb")
 
-    platform_tag = next(sys_tags()).platform
+    machine = platform.machine().lower()
+    system = platform.system().lower()
+    if system == "linux":
+        libc = ctypes.CDLL("libc.so.6")
+        libc.gnu_get_libc_version.restype = ctypes.c_char_p
+        glibc_version = libc.gnu_get_libc_version().decode().replace(".", "_")
+        platform_tag = f"manylinux_{glibc_version}_{machine}"
+    elif system == "darwin":
+        platform_tag = f"macosx_11_0_arm64"
+    elif system == "windows":
+        platform_tag = f"win_amd64"
+
     if "manylinux_2_28_x86_64" == platform_tag:
         version(
             "1.9.0-cp313",
