@@ -4,6 +4,7 @@
 
 import ctypes
 import platform
+
 from spack_repo.builtin.build_systems.python import PythonPackage
 
 from spack.package import *
@@ -26,9 +27,9 @@ class PyQatComm(PythonPackage):
         glibc_version = libc.gnu_get_libc_version().decode().replace(".", "_")
         platform_tag = f"manylinux_{glibc_version}_{machine}"
     elif system == "darwin":
-        platform_tag = f"macosx_11_0_arm64"
+        platform_tag = "macosx_11_0_arm64"
     elif system == "windows":
-        platform_tag = f"win_amd64"
+        platform_tag = "win_amd64"
 
     if "manylinux_2_28_x86_64" == platform_tag:
         version(
