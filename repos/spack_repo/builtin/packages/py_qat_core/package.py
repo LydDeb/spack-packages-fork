@@ -2,11 +2,12 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+import ctypes
+import platform
+
 from spack_repo.builtin.build_systems.python import PythonPackage
 
 from spack.package import *
-
-from packaging.tags import sys_tags
 
 
 class PyQatCore(PythonPackage):
@@ -18,7 +19,18 @@ class PyQatCore(PythonPackage):
 
     maintainers("LydDeb")
 
-    platform_tag = next(sys_tags()).platform
+    machine = platform.machine().lower()
+    system = platform.system().lower()
+    if system == "linux":
+        libc = ctypes.CDLL("libc.so.6")
+        libc.gnu_get_libc_version.restype = ctypes.c_char_p
+        glibc_version = libc.gnu_get_libc_version().decode().replace(".", "_")
+        platform_tag = f"manylinux_{glibc_version}_{machine}"
+    elif system == "darwin":
+        platform_tag = "macosx_11_0_arm64"
+    elif system == "windows":
+        platform_tag = "win_amd64"
+
     if "macosx_11_0_arm64" == platform_tag:
         version(
             "1.13.1-cp314",
@@ -142,7 +154,6 @@ class PyQatCore(PythonPackage):
         )
         depends_on("python@3.14", type=("build", "run"), when="@1.13.1-cp314")
         depends_on("python@3.13", type=("build", "run"), when="@1.13.1-cp313")
-
 
     depends_on("python@3.12", type=("build", "run"), when="@1.13.1-cp312")
     depends_on("python@3.11", type=("build", "run"), when="@1.13.1-cp311")
