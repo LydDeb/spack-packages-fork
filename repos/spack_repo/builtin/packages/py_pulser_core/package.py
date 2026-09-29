@@ -46,6 +46,4 @@ class PyPulserCore(PythonPackage):
         pkg_ver = version.up_to_3
         cp_ver = "py3"
         platform_tag = "none-any"
-        return url.format(
-            pkg_ver, cp_ver, platform_tag, first_letter, dash_name, underscored_name
-        )
+        return url.format(pkg_ver, cp_ver, platform_tag, first_letter, dash_name, underscored_name)
