@@ -32,3 +32,19 @@ class PyPulserCore(PythonPackage):
         depends_on("py-numpy@2:", when="^python@3.13:")
         depends_on("py-scipy@:1")
         depends_on("py-torch@2.6:2", when="+torch")
+
+    # The CI fetches the wrong URL
+    # https://files.pythonhosted.org/packages/source/p/pulser-core/pulser_core-1.9.0-py3-none-any.whl
+    # The wheel is here:
+    # https://files.pythonhosted.org/packages/py3/p/pulser-core/pulser_core-1.9.0-py3-none-any.whl
+    def url_for_version(self, version):
+        split_name = self.name.split("-")[1:]
+        dash_name = "-".join(split_name)
+        underscored_name = "_".join(split_name)
+        first_letter = dash_name[0]
+        url = "https://files.pythonhosted.org/packages/{1}/{3}/{4}/{5}-{0}-{1}-{1}-{2}.whl"
+        pkg_ver = version.up_to_3
+        cp_ver = "py3"
+        return url.format(
+            pkg_ver, cp_ver, self.platform_tag, first_letter, dash_name, underscored_name
+        )
