@@ -42,9 +42,10 @@ class PyPulserCore(PythonPackage):
         dash_name = "-".join(split_name)
         underscored_name = "_".join(split_name)
         first_letter = dash_name[0]
-        url = "https://files.pythonhosted.org/packages/{1}/{3}/{4}/{5}-{0}-{1}-{1}-{2}.whl"
+        url = "https://files.pythonhosted.org/packages/{1}/{3}/{4}/{5}-{0}-{1}-{2}.whl"
         pkg_ver = version.up_to_3
         cp_ver = "py3"
+        platform_tag = "none-any"
         return url.format(
-            pkg_ver, cp_ver, self.platform_tag, first_letter, dash_name, underscored_name
+            pkg_ver, cp_ver, platform_tag, first_letter, dash_name, underscored_name
         )
