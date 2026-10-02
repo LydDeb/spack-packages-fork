@@ -23,7 +23,8 @@ class PyAuth0Python(PythonPackage):
     version("3.24.1", sha256="62c2e177b9517879bd8632da9eb7668aedd5775fddea87b0e0e1e9a89b9dd096")
 
     with default_args(type="build"):
-        depends_on("py-poetry-core")
+        depends_on("py-poetry-core", when="@6")
+        depends_on("py-setuptools", when="@3")
 
     with default_args(type=("build", "run")):
         with default_args(when="@6"):
