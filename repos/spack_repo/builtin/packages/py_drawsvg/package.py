@@ -20,6 +20,8 @@ class PyDrawsvg(PythonPackage):
 
     maintainers("LydDeb")
 
+    license("MIT", checked_by="LydDeb")
+
     version("2.4.2", sha256="5efd8bcdc2c2400425e7fb71b4b80d8fdd83b1dc810f790f58a165df33ddd303")
 
     with default_args(type="build"):
