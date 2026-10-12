@@ -98,3 +98,12 @@ class PyQiskitAer(PythonPackage, CudaPackage):
                 args.append("-DCUDA_NVCC_FLAGS={0}".format(" ".join(self.cuda_flags(cuda_archs))))
 
         return {"cmake.args": ";".join(args)}
+
+
+    def url_for_version(self, version):
+        url = "https://files.pythonhosted.org/packages/source/q/qiskit-aer/qiskit{0}aer-{1}.tar.gz"
+        if version <= Version("0.16.0"):
+            separator = "-"
+        else:
+            separator = "_"
+        return url.format(separator, version)
