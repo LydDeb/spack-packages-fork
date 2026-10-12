@@ -99,7 +99,6 @@ class PyQiskitAer(PythonPackage, CudaPackage):
 
         return {"cmake.args": ";".join(args)}
 
-
     def url_for_version(self, version):
         url = "https://files.pythonhosted.org/packages/source/q/qiskit-aer/qiskit{0}aer-{1}.tar.gz"
         if version <= Version("0.16.0"):
